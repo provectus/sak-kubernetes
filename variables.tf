@@ -35,6 +35,12 @@ variable "availability_zones" {
   default     = []
 }
 
+variable "customers" {
+  description = "Customer name for taints"
+  type        = list(any)
+  default     = []
+}
+
 variable "subnets" {
   type        = list(any)
   description = "vpc subnets"
@@ -58,6 +64,11 @@ variable "user_arns" {
     groups   = list(string)
   }))
   default = []
+}
+
+variable "worker_groups" {
+  description = "List of worker groups will be create"
+  default = local.common, local.cpu, local.gpu
 }
 
 # On-demand instance

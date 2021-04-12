@@ -1,8 +1,8 @@
 locals {
   common = values({
-    for index, az in var.availability_zones :
-    az => {
-      name_prefix                              = "on-demand-common-${index}"
+    for index, customer in var.customers :
+    customer => {
+      name_prefix                              = "on-demand-${customer}-${index}"
       instance_type                            = var.on_demand_common_instance_type
       override_instance_types                  = var.on_demand_common_override_instance_types
       asg_max_size                             = var.on_demand_common_max_cluster_size
