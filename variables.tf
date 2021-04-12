@@ -66,11 +66,6 @@ variable "user_arns" {
   default = []
 }
 
-variable "worker_groups" {
-  description = "List of worker groups will be create"
-  default = (local.common, local.cpu, local.gpu)
-}
-
 # On-demand instance
 variable "on_demand_common_max_cluster_size" {
   type        = string
