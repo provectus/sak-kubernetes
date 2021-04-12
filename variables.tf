@@ -68,7 +68,7 @@ variable "user_arns" {
 
 variable "worker_groups" {
   description = "List of worker groups will be create"
-  default = local.common, local.cpu, local.gpu
+  default = (local.common, local.cpu, local.gpu)
 }
 
 # On-demand instance
