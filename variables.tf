@@ -191,12 +191,12 @@ variable "on_demand_customer_desired_capacity" {
 
 variable "on_demand_customer_instance_type" {
   description = "EC2 on_demand Instance type"
-  default     = "c5.xlarge"
+  default     = "m5.xlarge"
 }
 
 variable "on_demand_customer_override_instance_types" {
   description = "EC2 on_demand Instance type"
-  default     = ["c5.xlarge", "c5.2xlarge", "c5n.xlarge"]
+  default     = ["m5.large", "m5.xlarge", "m5.2xlarge"]
 }
 
 variable "on_demand_customer_allocation_strategy" {
