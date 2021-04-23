@@ -19,17 +19,17 @@ locals {
       tags = [
         {
           "key"                 = "k8s.io/cluster-autoscaler/enabled"
-          "propagate_at_launch" = "false"
+          "propagate_at_launch" = "true"
           "value"               = "true"
         },
         {
           "key"                 = "k8s.io/cluster-autoscaler/${var.cluster_name}"
-          "propagate_at_launch" = "false"
+          "propagate_at_launch" = "true"
           "value"               = "owned"
         },
         {
           "key"                 = "k8s.io/cluster-autoscaler/node-template/label/node-type"
-          "propagate_at_launch" = "false"
+          "propagate_at_launch" = "true"
           "value"               = "common"
         }
       ]
@@ -56,22 +56,22 @@ locals {
       tags = [
         {
           "key"                 = "k8s.io/cluster-autoscaler/enabled"
-          "propagate_at_launch" = "false"
+          "propagate_at_launch" = "true"
           "value"               = "true"
         },
         {
           "key"                 = "k8s.io/cluster-autoscaler/${var.cluster_name}"
-          "propagate_at_launch" = "false"
+          "propagate_at_launch" = "true"
           "value"               = "owned"
         },
         {
           "key"                 = "k8s.io/cluster-autoscaler/node-template/label/node-type"
-          "propagate_at_launch" = "false"
+          "propagate_at_launch" = "true"
           "value"               = "${customer}"
         },
         {
           "key"                 = "k8s.io/cluster-autoscaler/node-template/taint/node-type"
-          "propagate_at_launch" = "false"
+          "propagate_at_launch" = "true"
           "value"               = "${customer}:NoSchedule"
         }
       ]
