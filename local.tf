@@ -19,17 +19,17 @@ locals {
       tags = [
         {
           "key"                 = "k8s.io/cluster-autoscaler/enabled"
-          "propagate_at_launch" = "false"
+          "propagate_at_launch" = "true"
           "value"               = "true"
         },
         {
           "key"                 = "k8s.io/cluster-autoscaler/${var.cluster_name}"
-          "propagate_at_launch" = "false"
+          "propagate_at_launch" = "true"
           "value"               = "owned"
         },
         {
           "key"                 = "k8s.io/cluster-autoscaler/node-template/label/node-type"
-          "propagate_at_launch" = "false"
+          "propagate_at_launch" = "true"
           "value"               = "common"
         }
       ]
@@ -55,22 +55,22 @@ locals {
       tags = [
         {
           "key"                 = "k8s.io/cluster-autoscaler/enabled"
-          "propagate_at_launch" = "false"
+          "propagate_at_launch" = "true"
           "value"               = "true"
         },
         {
           "key"                 = "k8s.io/cluster-autoscaler/${var.cluster_name}"
-          "propagate_at_launch" = "false"
+          "propagate_at_launch" = "true"
           "value"               = "owned"
         },
         {
           "key"                 = "k8s.io/cluster-autoscaler/node-template/label/node-type"
-          "propagate_at_launch" = "false"
+          "propagate_at_launch" = "true"
           "value"               = "cpu"
         },
         {
           "key"                 = "k8s.io/cluster-autoscaler/node-template/taint/node-type"
-          "propagate_at_launch" = "false"
+          "propagate_at_launch" = "true"
           "value"               = "cpu:NoSchedule"
         }
       ]
@@ -97,37 +97,37 @@ locals {
       tags = [
         {
           "key"                 = "k8s.io/cluster-autoscaler/enabled"
-          "propagate_at_launch" = "false"
+          "propagate_at_launch" = "true"
           "value"               = "true"
         },
         {
           "key"                 = "k8s.io/cluster-autoscaler/${var.cluster_name}"
-          "propagate_at_launch" = "false"
+          "propagate_at_launch" = "true"
           "value"               = "owned"
         },
         {
           "key"                 = "k8s.io/cluster-autoscaler/node-template/label/node-type"
-          "propagate_at_launch" = "false"
+          "propagate_at_launch" = "true"
           "value"               = "gpu"
         },
         {
           "key"                 = "k8s.io/cluster-autoscaler/node-template/label/nvidia.com/gpu"
-          "propagate_at_launch" = "false"
+          "propagate_at_launch" = "true"
           "value"               = "gpu"
         },
         {
           "key"                 = "k8s.io/cluster-autoscaler/node-template/taint/node-type"
-          "propagate_at_launch" = "false"
+          "propagate_at_launch" = "true"
           "value"               = "gpu:NoSchedule"
         },
         {
           "key"                 = "k8s.io/cluster-autoscaler/node-template/taint/nvidia.com/gpu"
-          "propagate_at_launch" = "false"
+          "propagate_at_launch" = "true"
           "value"               = "gpu:NoSchedule"
         },
         {
           "key"                 = "k8s.io/cluster-autoscaler/node-template/resources/nvidia.com/gpu"
-          "propagate_at_launch" = "false"
+          "propagate_at_launch" = "true"
           "value"               = var.on_demand_gpu_resource_count
         }
       ]
