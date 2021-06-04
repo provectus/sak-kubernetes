@@ -174,7 +174,7 @@ variable "on_demand_gpu_asg_recreate_on_change" {
 variable "on_demand_customer_max_cluster_size" {
   type        = string
   description = "Max number of on demand instances in EKS autoscaling group"
-  default     = "2"
+  default     = "4"
 }
 
 variable "on_demand_customer_min_cluster_size" {
@@ -196,7 +196,7 @@ variable "on_demand_customer_instance_type" {
 
 variable "on_demand_customer_override_instance_types" {
   description = "EC2 on_demand Instance type"
-  default     = ["m5.large", "m5.xlarge", "m5.2xlarge"]
+  default     = ["m5.xlarge", "m5.2xlarge"]
 }
 
 variable "on_demand_customer_allocation_strategy" {
