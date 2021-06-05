@@ -40,6 +40,12 @@ variable "subnets" {
   description = "vpc subnets"
 }
 
+variable "domains" {
+  type        = list(string)
+  default     = []
+  description = "A list of domains to use for ingresses"
+}
+
 variable "admin_arns" {
   description = "Additional IAM users to add to the aws-auth configmap."
   type = list(object({
