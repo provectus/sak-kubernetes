@@ -66,6 +66,24 @@ variable "user_arns" {
   default = []
 }
 
+variable "addon_create_vpc_cni" {
+  description = "Add addon for EKS cluster"
+  default = true
+  type = bool
+}
+
+variable "addon_create_kube_proxy" {
+  description = "Add addon for EKS cluster"
+  default = true
+  type = bool
+}
+
+variable "addon_create_coredns" {
+  description = "Add addon for EKS cluster"
+  default = true
+  type = bool
+}
+
 # On-demand instance
 variable "on_demand_common_max_cluster_size" {
   type        = string
