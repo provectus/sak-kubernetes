@@ -1,5 +1,5 @@
 locals {
-  registry = "https://registry.${var.domains[0]"
+  registry = "https://registry.${var.domains[0]}"
 
   common = values({
     for index, az in var.availability_zones :
