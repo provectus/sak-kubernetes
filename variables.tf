@@ -19,7 +19,7 @@ variable "cluster_name" {
 variable "cluster_version" {
   type        = string
   description = "EKS cluster version"
-  default     = "1.20"
+  default     = "1.19"
 }
 
 variable "vpc_id" {
@@ -72,16 +72,34 @@ variable "addon_create_vpc_cni" {
   type = bool
 }
 
+variable "addon_vpc_cni_version" {
+  description = "VPC addon version for EKS cluster"
+  default = "v1.7.5-eksbuild.2"
+  type = string
+}
+
 variable "addon_create_kube_proxy" {
   description = "Add addon for EKS cluster"
   default = true
   type = bool
 }
 
+variable "addon_kube_proxy_version" {
+  description = "Kubeproxy addon version for EKS cluster"
+  default = "default"
+  type = string
+}
+
 variable "addon_create_coredns" {
   description = "Add addon for EKS cluster"
   default = true
   type = bool
+}
+
+variable "addon_coredns_version" {
+  description = "coredns addon version for EKS cluster"
+  default = "default"
+  type = string
 }
 
 # On-demand instance
