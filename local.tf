@@ -1,9 +1,10 @@
 locals {
   registry = "https://registry.${var.domains[0]}"
 
-  docker_config_json = jsonencode({
+  docker_config_json = jsonencode(
+  {
     "registry-mirrors" = ["${local.registry}"]
-    })
+  })
 
   common = values({
     for index, az in var.availability_zones :
