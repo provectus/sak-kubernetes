@@ -3,7 +3,7 @@ locals {
 
   docker_config_json = jsonencode(
   {
-    "registry-mirrors" = ["${local.registry}"]
+    "\"registry-mirrors\"" = ["\"${local.registry}\""]
   })
 
   common = values({
