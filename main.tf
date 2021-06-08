@@ -37,7 +37,7 @@ module "eks" {
 
   workers_group_defaults = {
     additional_userdata = "sudo yum install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpm && sudo systemctl enable amazon-ssm-agent && sudo systemctl start amazon-ssm-agent"
-    #bootstrap_extra_args = "--docker-config-json={\"registry-mirrors\": [\"${local.registry}\"]}"
+    bootstrap_extra_args = "--docker-config-json ${jsonencode({"registry-mirrors"="[\"${local.registry}\"]"})}"
   }
 
   # Note:
