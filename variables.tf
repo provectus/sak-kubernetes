@@ -19,7 +19,7 @@ variable "cluster_name" {
 variable "cluster_version" {
   type        = string
   description = "EKS cluster version"
-  default     = "1.20"
+  default     = "1.19"
 }
 
 variable "vpc_id" {
@@ -40,6 +40,12 @@ variable "subnets" {
   description = "vpc subnets"
 }
 
+variable "domains" {
+  type        = list(string)
+  default     = []
+  description = "A list of domains to use for ingresses"
+}
+
 variable "admin_arns" {
   description = "Additional IAM users to add to the aws-auth configmap."
   type = list(object({
@@ -58,6 +64,42 @@ variable "user_arns" {
     groups   = list(string)
   }))
   default = []
+}
+
+variable "addon_create_vpc_cni" {
+  description = "Add addon for EKS cluster"
+  default = true
+  type = bool
+}
+
+variable "addon_vpc_cni_version" {
+  description = "VPC addon version for EKS cluster"
+  default = "v1.7.5-eksbuild.2"
+  type = string
+}
+
+variable "addon_create_kube_proxy" {
+  description = "Add addon for EKS cluster"
+  default = true
+  type = bool
+}
+
+variable "addon_kube_proxy_version" {
+  description = "Kubeproxy addon version for EKS cluster"
+  default = "default"
+  type = string
+}
+
+variable "addon_create_coredns" {
+  description = "Add addon for EKS cluster"
+  default = true
+  type = bool
+}
+
+variable "addon_coredns_version" {
+  description = "coredns addon version for EKS cluster"
+  default = "default"
+  type = string
 }
 
 # On-demand instance
@@ -107,7 +149,7 @@ variable "on_demand_common_percentage_above_base_capacity" {
 
 variable "on_demand_common_asg_recreate_on_change" {
   description = "Recreate the autoscaling group when the Launch Template or Launch Configuration change."
-  default     = "false"
+  default     = "true"
 }
 
 # On-demand GPU instance
@@ -161,7 +203,7 @@ variable "on_demand_gpu_percentage_above_base_capacity" {
 
 variable "on_demand_gpu_asg_recreate_on_change" {
   description = "Recreate the autoscaling group when the Launch Template or Launch Configuration change."
-  default     = "false"
+  default     = "true"
 }
 
 # On-demand CPU instance
@@ -211,5 +253,5 @@ variable "on_demand_cpu_percentage_above_base_capacity" {
 
 variable "on_demand_cpu_asg_recreate_on_change" {
   description = "Recreate the autoscaling group when the Launch Template or Launch Configuration change."
-  default     = "false"
+  default     = "true"
 }
