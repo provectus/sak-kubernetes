@@ -68,38 +68,38 @@ variable "user_arns" {
 
 variable "addon_create_vpc_cni" {
   description = "Add addon for EKS cluster"
-  default = true
-  type = bool
+  default     = true
+  type        = bool
 }
 
 variable "addon_vpc_cni_version" {
   description = "VPC addon version for EKS cluster"
-  default = "v1.7.5-eksbuild.2"
-  type = string
+  default     = "v1.7.5-eksbuild.2"
+  type        = string
 }
 
 variable "addon_create_kube_proxy" {
   description = "Add addon for EKS cluster"
-  default = true
-  type = bool
+  default     = true
+  type        = bool
 }
 
 variable "addon_kube_proxy_version" {
   description = "Kubeproxy addon version for EKS cluster"
-  default = "default"
-  type = string
+  default     = "default"
+  type        = string
 }
 
 variable "addon_create_coredns" {
   description = "Add addon for EKS cluster"
-  default = true
-  type = bool
+  default     = true
+  type        = bool
 }
 
 variable "addon_coredns_version" {
   description = "coredns addon version for EKS cluster"
-  default = "default"
-  type = string
+  default     = "default"
+  type        = string
 }
 
 # On-demand instance
@@ -151,6 +151,30 @@ variable "on_demand_common_asg_recreate_on_change" {
   description = "Recreate the autoscaling group when the Launch Template or Launch Configuration change."
   default     = "true"
 }
+
+
+# enable control plane cloudwatch logging
+variable "cloudwatch_logging_enabled" {
+  type        = bool
+  description = "Send EKS control plane logs to cloudwatch"
+  default     = false
+}
+
+
+variable "cloudwatch_cluster_log_types" {
+  type        = list(any)
+  description = "log types that you want to send to cloudwatch"
+  default     = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
+}
+
+
+variable "cloudwatch_cluster_log_retention_days" {
+  type        = number
+  description = "logs retention period in days (1, 3, 5, 7, 14, 30, 60, 90, 120, 150, 180, 365, 400, 545, 731, 1827, 3653, 0). 0 means logs will never expire."
+  default     = 90
+}
+
+
 
 # On-demand GPU instance
 variable "on_demand_gpu_max_cluster_size" {
