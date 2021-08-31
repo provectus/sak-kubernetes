@@ -8,6 +8,19 @@ data "aws_ami" "eks_gpu_worker" {
   owners      = ["602401143452"] // The ID of the owner of the official AWS EKS AMIs.
 }
 
+# Encrypt all volumes by default
+# resource "aws_kms_key" "eks" {
+#   description             = "KMS key to encrypt all ebs"
+#   deletion_window_in_days = 10
+# }
+
+# resource "aws_ebs_default_kms_key" "eks" {
+#   key_arn = aws_kms_key.eks.arn
+# }
+
+# resource "aws_ebs_encryption_by_default" "eks" {
+#   enabled = true
+# }
 
 module "eks" {
   source          = "terraform-aws-modules/eks/aws"
