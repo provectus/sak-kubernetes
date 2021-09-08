@@ -144,7 +144,7 @@ variable "on_demand_common_base_capacity" {
 
 variable "on_demand_common_percentage_above_base_capacity" {
   description = "Percentage split between on-demand and Spot instances above the base on-demand capacity"
-  default     = "100"
+  default     = "0"
 }
 
 variable "on_demand_common_asg_recreate_on_change" {
@@ -198,7 +198,7 @@ variable "on_demand_gpu_base_capacity" {
 
 variable "on_demand_gpu_percentage_above_base_capacity" {
   description = "Percentage split between on-demand and Spot instances above the base on-demand capacity"
-  default     = "100"
+  default     = "0"
 }
 
 variable "on_demand_gpu_asg_recreate_on_change" {
@@ -248,7 +248,7 @@ variable "on_demand_cpu_base_capacity" {
 
 variable "on_demand_cpu_percentage_above_base_capacity" {
   description = "Percentage split between on-demand and Spot instances above the base on-demand capacity"
-  default     = "100"
+  default     = "0"
 }
 
 variable "on_demand_cpu_asg_recreate_on_change" {
