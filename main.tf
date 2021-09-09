@@ -24,7 +24,7 @@ data "aws_ami" "eks_gpu_worker" {
 
 module "eks" {
   source          = "terraform-aws-modules/eks/aws"
-  version         = "16.2.0"
+  version         = "17.18.0"
   cluster_version = var.cluster_version
   cluster_name    = var.cluster_name
   kubeconfig_name = var.cluster_name
