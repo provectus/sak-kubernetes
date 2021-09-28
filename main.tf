@@ -5,7 +5,7 @@ data "aws_ami" "eks_gpu_worker" {
   }
 
   most_recent = true
-  owners      = ["602401143452"] // The ID of the owner of the official AWS EKS AMIs.
+  owners      = ["602401143452"] #// The ID of the owner of the official AWS EKS AMIs.
 }
 
 # Encrypt all volumes by default
@@ -49,7 +49,7 @@ module "eks" {
   ]
 
   workers_group_defaults = {
-    additional_userdata = "sudo yum install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpm && sudo systemctl enable amazon-ssm-agent && sudo systemctl start amazon-ssm-agent"
+    additional_userdata  = "sudo yum install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpm && sudo systemctl enable amazon-ssm-agent && sudo systemctl start amazon-ssm-agent"
     bootstrap_extra_args = "--docker-config-json ${local.docker_config_json}"
   }
 
