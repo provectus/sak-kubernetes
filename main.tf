@@ -34,6 +34,12 @@ module "eks" {
 
   map_users = concat(var.admin_arns, var.user_arns)
 
+
+  # NOTE:
+  #  enable cloudwatch logging 
+  cluster_enabled_log_types     = var.cloudwatch_logging_enabled ? var.cloudwatch_cluster_log_types : []
+  cluster_log_retention_in_days = var.cloudwatch_logging_enabled ? var.cloudwatch_cluster_log_retention_days : 90
+
   tags = {
     Environment = var.environment
     Project     = var.project
@@ -49,7 +55,7 @@ module "eks" {
   ]
 
   workers_group_defaults = {
-    additional_userdata = "sudo yum install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpm && sudo systemctl enable amazon-ssm-agent && sudo systemctl start amazon-ssm-agent"
+    additional_userdata  = "sudo yum install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpm && sudo systemctl enable amazon-ssm-agent && sudo systemctl start amazon-ssm-agent"
     bootstrap_extra_args = "--docker-config-json ${local.docker_config_json}"
   }
 
