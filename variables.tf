@@ -158,6 +158,30 @@ variable "on_demand_common_asg_recreate_on_change" {
   default     = "true"
 }
 
+
+# enable control plane cloudwatch logging
+variable "cloudwatch_logging_enabled" {
+  type        = bool
+  description = "Send EKS control plane logs to cloudwatch"
+  default     = false
+}
+
+
+variable "cloudwatch_cluster_log_types" {
+  type        = list(any)
+  description = "log types that you want to send to cloudwatch"
+  default     = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
+}
+
+
+variable "cloudwatch_cluster_log_retention_days" {
+  type        = number
+  description = "logs retention period in days (1, 3, 5, 7, 14, 30, 60, 90, 120, 150, 180, 365, 400, 545, 731, 1827, 3653, 0). 0 means logs will never expire."
+  default     = 90
+}
+
+
+
 # On-demand GPU instance
 variable "on_demand_gpu_max_cluster_size" {
   type        = string

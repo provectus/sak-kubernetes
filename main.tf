@@ -34,6 +34,12 @@ module "eks" {
 
   map_users = concat(var.admin_arns, var.user_arns)
 
+
+  # NOTE:
+  #  enable cloudwatch logging 
+  cluster_enabled_log_types     = var.cloudwatch_logging_enabled ? var.cloudwatch_cluster_log_types : []
+  cluster_log_retention_in_days = var.cloudwatch_logging_enabled ? var.cloudwatch_cluster_log_retention_days : 90
+
   tags = {
     Environment = var.environment
     Project     = var.project
