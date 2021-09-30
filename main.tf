@@ -5,7 +5,7 @@ data "aws_ami" "eks_gpu_worker" {
   }
 
   most_recent = true
-  owners      = ["602401143452"] // The ID of the owner of the official AWS EKS AMIs.
+  owners      = ["602401143452"] #// The ID of the owner of the official AWS EKS AMIs.
 }
 
 # Encrypt all volumes by default

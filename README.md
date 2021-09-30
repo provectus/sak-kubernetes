@@ -25,3 +25,16 @@ module "kubernetes" {
   subnets            = module.network.private_subnets
 }
 ```
+
+## Requirements
+
+```
+terraform >= 0.15
+ ```
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| aws | >= 3.0 |
+| kubernetes | >= 1.11 |
