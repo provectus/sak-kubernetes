@@ -19,7 +19,7 @@ variable "cluster_name" {
 variable "cluster_version" {
   type        = string
   description = "EKS cluster version"
-  default     = "1.19"
+  default     = "1.21"
 }
 
 variable "vpc_id" {
@@ -28,6 +28,15 @@ variable "vpc_id" {
   description = "An ID of the existing AWS VPC"
 }
 
+variable "container_runtime" {
+  type        = string
+  default     = "docker"
+  description = "Type of container runtime interface. Allowed values: docker/containerd"
+  validation {
+    condition     = can(regex("^(docker|containerd)$", var.container_runtime))
+    error_message = "Must be docker or containerd."
+  }
+}
 
 variable "availability_zones" {
   description = "Availability zones for project"

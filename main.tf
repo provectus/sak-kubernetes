@@ -24,7 +24,7 @@ data "aws_ami" "eks_gpu_worker" {
 
 module "eks" {
   source          = "terraform-aws-modules/eks/aws"
-  version         = "17.18.0"
+  version         = "17.23.0"
   cluster_version = var.cluster_version
   cluster_name    = var.cluster_name
   kubeconfig_name = var.cluster_name
@@ -36,7 +36,7 @@ module "eks" {
 
 
   # NOTE:
-  #  enable cloudwatch logging 
+  #  enable cloudwatch logging
   cluster_enabled_log_types     = var.cloudwatch_logging_enabled ? var.cloudwatch_cluster_log_types : []
   cluster_log_retention_in_days = var.cloudwatch_logging_enabled ? var.cloudwatch_cluster_log_retention_days : 90
 
@@ -56,7 +56,7 @@ module "eks" {
 
   workers_group_defaults = {
     additional_userdata  = "sudo yum install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpm && sudo systemctl enable amazon-ssm-agent && sudo systemctl start amazon-ssm-agent"
-    bootstrap_extra_args = "--docker-config-json ${local.docker_config_json}"
+    bootstrap_extra_args = (var.container_runtime == "containerd") ? "--container-runtime containerd" : "--docker-config-json ${local.docker_config_json}"
   }
 
   # Note:
