@@ -6,9 +6,8 @@ locals {
       "\"registry-mirrors\"" = ["\"${local.registry}\""]
   })
 
-  common = values({
-    for index, az in var.availability_zones :
-    az => {
+  common = [for index, az in var.availability_zones :
+    {
       name_prefix                              = "on-demand-common-${index}"
       instance_type                            = var.on_demand_common_instance_type
       override_instance_types                  = var.on_demand_common_override_instance_types
@@ -41,7 +40,7 @@ locals {
         }
       ]
     }
-  })
+  ]
 
   cpu = values({
     "cpu" = {
