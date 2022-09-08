@@ -40,10 +40,12 @@ module "eks" {
   cluster_enabled_log_types     = var.cloudwatch_logging_enabled ? var.cloudwatch_cluster_log_types : []
   cluster_log_retention_in_days = var.cloudwatch_logging_enabled ? var.cloudwatch_cluster_log_retention_days : 90
 
-  tags = {
+  tags = merge(tomap({
     Environment = var.environment
     Project     = var.project
-  }
+    }),
+    var.additional_tags,
+    )
 
   workers_additional_policies = [
     "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore",
@@ -74,36 +76,3 @@ resource "aws_iam_openid_connect_provider" "cluster" {
   thumbprint_list = ["9e99a48a9960b14926bb7f3b02e22da2b0ab7280"]
   url             = module.eks.cluster_oidc_issuer_url
 }
-
-# resource "aws_eks_addon" "vpc_cni" {
-#   count = var.addon_create_vpc_cni ? 1 : 0
-
-#   cluster_name      = module.eks.cluster_id
-#   addon_name        = "vpc-cni"
-#   resolve_conflicts = "OVERWRITE"
-#   addon_version     = var.addon_vpc_cni_version
-
-#   tags = local.tags
-# }
-
-# resource "aws_eks_addon" "kube_proxy" {
-#   count = var.addon_create_kube_proxy ? 1 : 0
-
-#   cluster_name      = module.eks.cluster_id
-#   addon_name        = "kube-proxy"
-#   resolve_conflicts = "OVERWRITE"
-#   addon_version     = var.addon_kube_proxy_version
-
-#   tags = local.tags
-# }
-
-# resource "aws_eks_addon" "coredns" {
-#   count = var.addon_create_coredns ? 1 : 0
-
-#   cluster_name      = module.eks.cluster_id
-#   addon_name        = "coredns"
-#   resolve_conflicts = "OVERWRITE"
-#   addon_version     = var.addon_coredns_version
-
-#   tags = local.tags
-# }

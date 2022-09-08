@@ -10,6 +10,11 @@ variable "project" {
   description = "A value that will be used in annotations and tags to identify resources with the `Project` key"
 }
 
+variable "additional_tags" {
+  default     = {}
+  description = "Additional resource tags"
+  type        = map(string)
+}
 variable "cluster_name" {
   type        = string
   default     = "test"
@@ -74,42 +79,6 @@ variable "user_arns" {
   }))
   default = []
 }
-
-# variable "addon_create_vpc_cni" {
-#   description = "Add addon for EKS cluster"
-#   default     = true
-#   type        = bool
-# }
-#
-# variable "addon_vpc_cni_version" {
-#   description = "VPC addon version for EKS cluster"
-#   default     = "v1.7.5-eksbuild.2"
-#   type        = string
-# }
-#
-# variable "addon_create_kube_proxy" {
-#   description = "Add addon for EKS cluster"
-#   default     = true
-#   type        = bool
-# }
-#
-# variable "addon_kube_proxy_version" {
-#   description = "Kubeproxy addon version for EKS cluster"
-#   default     = "default"
-#   type        = string
-# }
-#
-# variable "addon_create_coredns" {
-#   description = "Add addon for EKS cluster"
-#   default     = true
-#   type        = bool
-# }
-#
-# variable "addon_coredns_version" {
-#   description = "coredns addon version for EKS cluster"
-#   default     = "default"
-#   type        = string
-# }
 
 # On-demand instance
 variable "on_demand_common_max_cluster_size" {
