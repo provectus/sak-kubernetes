@@ -80,6 +80,12 @@ variable "user_arns" {
   default = []
 }
 
+variable "custom_template" {
+  type = list(any)
+  default = []
+  description = "ffoo"
+}
+
 # On-demand instance
 variable "on_demand_common_max_cluster_size" {
   type        = string
